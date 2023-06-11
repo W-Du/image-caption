@@ -29,7 +29,9 @@ app.use(passport.session())
 
 //routers
 const userRouter = require('./routes/userRouter')
+const captionRouter = require('./routes/captionRouter')
 app.use('/', userRouter);
+app.use('/caption', captionRouter);
 
 
 
