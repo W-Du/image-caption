@@ -28,6 +28,16 @@ class Caption {
   static delete(caption_id) {
     return db.one('DELETE FROM captions WHERE id = $1 RETURNING *', [caption_id])
   }
+
+  static getByUser(user_id) {
+    const query = `SELECT photos.id, photos.name AS photo, 
+    captions.title, captions.caption FROM captions
+    LEFT JOIN users ON users.id = captions.user_id
+    LEFT JOIN photos ON captions.photo_id = photos.id
+    WHERE users.id = $1
+    ORDER BY photos.id;`
+    return db.manyOrNone(query, [user_id])
+  }
 }
 
 module.exports = Caption
