@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Captions by user</title>
+</head>
+<body>
+
+  <h1>Captions contributed by <%= user.username %></h1>
+
+  <div class="captions">
+    <% if (captions.length > 0) { %>
+      <ul>
+        <% captions.forEach((cap) => { %>
+          <li>
+            <p>Photo id: <%= cap.id %></p>
+            <p>Photo name: <%= cap.photo %></p>
+            <p>The title you gave this photo is:</p><br>
+            <h4><%= cap.title %></h4>
+            <p>Your caption is: <br><br> <%= cap.caption %></p>
+          </li>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <p>No captions yet.</p>
+    <% } %>
+
+  </div>
+
+  <a href="/logout">Logout</a>
+
+  
+</body>
+</html>

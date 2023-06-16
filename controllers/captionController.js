@@ -1,4 +1,5 @@
 const Caption  = require('../models/caption')
+const User = require('../models/user')
 
 const errorHandler = (res, error, id = null) => {
   if ( id !== null && error.message === 'No data returned from the query.') {
@@ -25,6 +26,21 @@ exports.getCaptionById = async (req, res) => {
     res.status(200).json(caption)
   } catch(err) {
     errorHandler(res,err,id)
+  }
+}
+
+exports.getCaptionByUser = async (req, res) => {
+  const id = req.params.userId
+  try{
+    const captions = await Caption.getByUser(id)
+    if(captions){
+      //res.status(200).json(captions)
+      res.render('captions', { user: req.user, captions: captions })
+    } else {
+      res.json({message: "User has no caption"})
+    } 
+  } catch (err) {
+    errorHandler(res, err)
   }
 }
 
