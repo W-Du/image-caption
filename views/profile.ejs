@@ -16,8 +16,15 @@
         <span class="glyphicon glyphicon-log-out"></span> Log out
       </a>
 
+      <a href="/photo" class="btn btn-info btn-md">
+        <span class="glyphicon glyphicon-log-out"></span> View all photos
+      </a>
+      <br>
+
       <% if (user) { %>
-        <a href="/caption/user/<%= user.id %>">View My Captions</a>
+        <a href="/caption/user/<%= user.id %>">
+          <span class="glyphicon glyphicon-log-out"></span> View My Captions
+        </a>
       <% } else {%>
         <a href='/register'>Create an account</a>
       <% } %>
