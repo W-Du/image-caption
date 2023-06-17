@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photos</title>
+</head>
+<body>
+
+  <% if (user) { %>
+    <h1>Hello <%= user.username %>, </h1>
+  <% } %>
+  <h1>Here are the photos available</h1>
+
+  <div class="photos">
+    <% if (photos.length > 0) { %>
+      <ul>
+        <% photos.forEach((p) => { %>
+          <li>
+            <img src="<%= p.url %>" alt="<%= p.description %>">
+            <p>Photo name: <%= p.name %></p>
+            <p>default description: <%= p.description %></p>
+          </li>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <p>Error: cannot get photos</p>
+    <% } %>
+
+  </div>
+
+  <% if (user) { %>
+    <a href="/profile">Back to Profile</a>
+  <% } else {%>
+    <a href="register">Join us</a>
+  <% } %>
+
+  
+  
+</body>
+</html>

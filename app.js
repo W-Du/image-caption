@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/public"));
+app.use(express.static('public'));
 
 //session should be set up before passport
 app.use(
@@ -30,8 +30,10 @@ app.use(passport.session())
 //routers
 const userRouter = require('./routes/userRouter')
 const captionRouter = require('./routes/captionRouter')
+const photoRouter = require('./routes/photoRouter')
 app.use('/', userRouter);
 app.use('/caption', captionRouter);
+app.use('/photo', photoRouter);
 
 
 
